@@ -101,7 +101,7 @@ export default function ProjectsList({ projects, status, showFilters = true, pag
         </div>
       )}
 
-      <div className="projects-list" role="list">
+      <div className="projects-grid" role="list">
         {paginatedProjects.length ? (
           paginatedProjects.map(p => (
             <ProjectCard key={p.id ?? p.name} project={p} />

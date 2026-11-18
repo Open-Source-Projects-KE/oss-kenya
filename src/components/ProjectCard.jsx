@@ -1,21 +1,21 @@
-// Safe ForkIcon import with fallback
-let ForkIconComponent
-try {
-  ForkIconComponent = require('./icons/ForkIcon').default
-} catch {
-  ForkIconComponent = null
-}
+import ForkIcon from './icons/ForkIcon'
 
-function ForkIconWrapper({ className, ...props }) {
-  if (ForkIconComponent) {
-    return <ForkIconComponent className={className} {...props} />
-  }
-  // Fallback: simple fork symbol
+// Fallback fork icon (used if import fails)
+function FallbackForkIcon({ className, ...props }) {
   return (
     <svg className={className} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" {...props}>
       <path d="M2 3h12M2 8h12M2 13h12M6 1v2M10 1v2M6 15v2M10 15v2" />
     </svg>
   )
+}
+
+// Safe wrapper that catches render-time errors
+function ForkIconWrapper({ className, ...props }) {
+  try {
+    return <ForkIcon className={className} {...props} />
+  } catch {
+    return <FallbackForkIcon className={className} {...props} />
+  }
 }
 
 export default function ProjectCard({ project }) {

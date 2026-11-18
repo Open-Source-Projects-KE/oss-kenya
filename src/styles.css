@@ -152,8 +152,8 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 .welcome-lead{font-size:20px;line-height:1.7;color:var(--ink);margin:0 0 28px}
 .welcome-steps{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;margin:0 0 20px}
 .welcome-steps h3{font-size:19px;margin:0 0 16px;color:var(--ink)}
-.welcome-steps ol{margin:0;padding-left:20px;display:grid;gap:6px}
-.welcome-steps li{line-height:1.5;padding:2px 0}
+.welcome-steps ol{margin:0;padding-left:20px;display:grid;gap:2px}
+.welcome-steps li{line-height:1.4;padding:0}
 .welcome-steps strong{color:var(--ink)}
 .welcome-steps code{background:var(--bg);padding:2px 6px;border-radius:4px;font-size:.9em;font-family:ui-monospace,monospace}
 .welcome-steps a{color:var(--green);font-weight:600}
@@ -424,7 +424,8 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   box-shadow:8px 8px 0 #000;
 }
 .project-card__link{display:flex;flex-direction:column;flex:1;text-decoration:none;color:inherit}
-.project-card__meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.project-card__header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.project-card__meta{display:flex;flex-wrap:wrap;gap:8px}
 .project-card__category{
   font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
   color:var(--ink);
@@ -470,10 +471,10 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   display:inline-flex;
   align-items:center;
   gap:4px;
-  margin-top:12px;
   font-size:12px;
   font-weight:500;
   color:var(--muted);
+  flex-shrink:0;
 }
 .project-card__forks svg{
   flex-shrink:0;

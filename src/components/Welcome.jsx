@@ -7,7 +7,7 @@ export default function Welcome() {
           This is a curated collection of open source projects that actively welcome new contributors. Each project here has tagged issues specifically designed for all developer levels, good entry points to learn the codebase, make a meaningful change, and get your first pull request merged.
         </p>
         <div className="welcome-steps">
-          <h3>How to get started</h3>
+          <h3>Getting started:</h3>
           <ol>
             <li>
               <p>Pick a project — Use the filters below to match your interests, preferred language, and experience level.</p>

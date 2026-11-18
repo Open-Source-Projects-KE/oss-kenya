@@ -54,7 +54,7 @@ export default function Projects({ projects, status }) {
           <article className="card" key={p.id ?? p.name}>
             <h3>{p.name}</h3>
             <div className="tags">
-              <span className="tag">{p.category}</span>
+              <span className="tag category">{p.category}</span>
               <span className="tag lvl">{p.language}</span>
               <span className="tag lvl">{p.level}</span>
               {p.region === 'Kenya' && <span className="tag ke">Kenyan roots</span>}

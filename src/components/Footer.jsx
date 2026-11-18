@@ -178,7 +178,6 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        <p className="community-note">Community built with &#9829; in Kenya</p>
       </div>
     </footer>
   )

@@ -35,7 +35,7 @@ export default function ProjectsList({ projects, status, showFilters = true, pag
   return (
     <section id="projects" className={paginated ? 'projects-section--paginated' : ''}>
       <header className="projects-header">
-        <h2>Projects to contribute to</h2>
+        <h2>Projects</h2>
         <p className="lede">Filter by what you're interested in, the language you know, and how experienced you are.</p>
         {status && <div id="status" className="status-message">{status}</div>}
       </header>

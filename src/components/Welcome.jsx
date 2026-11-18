@@ -1,7 +1,7 @@
 export default function Welcome() {
   return (
     <section id="welcome" aria-labelledby="welcome-heading">
-      <h2 id="welcome-heading" className="visually-hidden">Ready to get involved in the open source community?</h2>
+      <h2 id="welcome-heading">Ready to get involved in the open source community?</h2>
       <div className="welcome-content">
         <p className="welcome-lead">
           This is a curated collection of open source projects that actively welcome new contributors. Each project here has tagged issues specifically designed for all developer levels, good entry points to learn the codebase, make a meaningful change, and get your first pull request merged.

@@ -152,8 +152,8 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 .welcome-lead{font-size:20px;line-height:1.7;color:var(--ink);margin:0 0 28px}
 .welcome-steps{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;margin:0 0 20px}
 .welcome-steps h3{font-size:19px;margin:0 0 16px;color:var(--ink)}
-.welcome-steps ol{margin:0;padding-left:20px;display:grid;gap:14px}
-.welcome-steps li{line-height:1.7}
+.welcome-steps ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.welcome-steps li{line-height:1.5;padding:2px 0}
 .welcome-steps strong{color:var(--ink)}
 .welcome-steps code{background:var(--bg);padding:2px 6px;border-radius:4px;font-size:.9em;font-family:ui-monospace,monospace}
 .welcome-steps a{color:var(--green);font-weight:600}
@@ -201,7 +201,6 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 .suggest-form{display:grid;gap:16px;max-width:680px}
 .suggest-form label,.suggest-form legend{font-weight:600;font-size:16px}
 .suggest-form input:not([type="checkbox"]){display:block;width:100%;margin-top:6px;padding:12px 14px;border:2px solid var(--ink);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:16px}
-.suggest-form input:not([type="checkbox"]):focus{outline:3px solid var(--red);outline-offset:2px}
 .field-note{font-size:14px;color:var(--ink);font-weight:400}
 .suggest-form fieldset{border:0;padding:0;margin:0}
 .suggest-form legend{margin-bottom:8px}
@@ -276,11 +275,6 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   color:var(--footer-ink);
   font:inherit;
   font-size:14px;
-}
-.newsletter-form input[type="email"]:focus{
-  outline:3px solid var(--red);
-  outline-offset:2px;
-  border-color:var(--green);
 }
 .newsletter-form .btn{
   padding:10px 18px;
@@ -406,9 +400,7 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 .projects-filters{margin-bottom:24px;padding:20px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .filters-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px;align-items:flex-end}
 .filter-search{flex:1;min-width:240px;padding:10px 14px;border:2px solid var(--ink);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px}
-.filter-search:focus{outline:3px solid var(--red);outline-offset:2px;border-color:var(--ink)}
 .filter-select{padding:10px 14px;border:2px solid var(--ink);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px;min-width:160px}
-.filter-select:focus{outline:3px solid var(--red);outline-offset:2px;border-color:var(--ink)}
 
 .projects-grid{
   display:grid;
@@ -586,11 +578,6 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   color:var(--footer-ink);
   font:inherit;
   font-size:15px;
-}
-.newsletter-form input[type="email"]:focus{
-  outline:3px solid var(--red);
-  outline-offset:2px;
-  border-color:var(--green);
 }
 .newsletter-form .btn{
   padding:12px 20px;

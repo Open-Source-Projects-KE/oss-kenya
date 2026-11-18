@@ -1,4 +1,4 @@
-import ForkIcon from '../assets/icons/fork-icon.svg'
+import { ReactComponent as ForkIcon } from '../assets/icons/fork-icon.svg'
 
 export default function ProjectCard({ project }) {
   const formatForks = (count) => {

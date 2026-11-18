@@ -52,7 +52,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.7 "Plus Jaka
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
 a{color:var(--green)}
-:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+:focus-visible:not(input):not(select):not(textarea){outline:3px solid var(--red);outline-offset:2px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 20px;width:100%}
 
 /* Page wrapper for sticky footer */

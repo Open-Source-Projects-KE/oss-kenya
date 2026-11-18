@@ -1,4 +1,22 @@
-import { ReactComponent as ForkIcon } from '../assets/icons/fork-icon.svg'
+// Safe ForkIcon import with fallback
+let ForkIconComponent
+try {
+  ForkIconComponent = require('./icons/ForkIcon').default
+} catch {
+  ForkIconComponent = null
+}
+
+function ForkIconWrapper({ className, ...props }) {
+  if (ForkIconComponent) {
+    return <ForkIconComponent className={className} {...props} />
+  }
+  // Fallback: simple fork symbol
+  return (
+    <svg className={className} viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" {...props}>
+      <path d="M2 3h12M2 8h12M2 13h12M6 1v2M10 1v2M6 15v2M10 15v2" />
+    </svg>
+  )
+}
 
 export default function ProjectCard({ project }) {
   const formatForks = (count) => {
@@ -19,7 +37,7 @@ export default function ProjectCard({ project }) {
           </div>
           {project.fork_count && (
             <div className="project-card__forks">
-              <ForkIcon />
+              <ForkIconWrapper />
               <span>{formatForks(project.fork_count)}</span>
             </div>
           )}

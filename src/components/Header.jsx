@@ -1,3 +1,5 @@
+import ThemeToggle from './ThemeToggle.jsx'
+
 export default function Header() {
   return (
     <header className="site-header" role="banner">
@@ -11,6 +13,7 @@ export default function Header() {
           <a href="#ctfs">CTFs</a>
           <a href="#contribute">Add yours</a>
         </div>
+        <ThemeToggle />
       </nav>
     </header>
   )

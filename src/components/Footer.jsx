@@ -107,9 +107,9 @@ export default function Footer() {
     {
       title: 'Projects',
       links: [
-        { label: 'All projects', href: '#projects' },
-        { label: 'Beginner friendly', href: '#projects' },
-        { label: 'Kenyan projects', href: '#projects' },
+        { label: 'All projects', href: '/projects' },
+        { label: 'Beginner friendly', href: '/projects' },
+        { label: 'Kenyan projects', href: '/projects' },
         { label: 'Suggest a project', href: '#contribute' },
       ],
     },

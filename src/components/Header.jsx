@@ -7,7 +7,7 @@ export default function Header() {
         <a className="brand" href="/">Open Source Kenya</a>
         <div className="nav-links">
           <a href="/learn">Learn</a>
-          <a href="#projects">Projects</a>
+          <a href="/projects">Projects</a>
           <a href="/programs">Get paid</a>
           <a href="/sponsors">Sponsors</a>
           <a href="#ctfs">CTFs</a>

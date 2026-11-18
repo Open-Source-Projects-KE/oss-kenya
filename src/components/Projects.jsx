@@ -20,7 +20,7 @@ export default function Projects({ projects, status }) {
 
   return (
     <section id="projects">
-      <h2>Projects to contribute to</h2>
+      <h2>Projects</h2>
       <p className="lede">Filter by what you’re interested in, the language you know, and how experienced you are.</p>
       {status && <div id="status">{status}</div>}
 

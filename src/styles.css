@@ -164,7 +164,7 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 .steps b{display:block;margin-bottom:2px}
 .steps span{color:var(--ink);font-size:15px}
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
-.filters input,.filters select{font:inherit;padding:10px 14px;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-width:0;font-size:15px}
+.filters input,.filters select{font:inherit;padding:10px 14px;border:2px solid var(--ink);border-radius:8px;background:var(--surface);color:var(--ink);min-width:0;font-size:15px}
 .filters input{flex:1 1 220px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
 .chip{font:inherit;font-size:15px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
@@ -200,7 +200,7 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 .note{font-size:15px;color:var(--ink);margin-top:14px}
 .suggest-form{display:grid;gap:16px;max-width:680px}
 .suggest-form label,.suggest-form legend{font-weight:600;font-size:16px}
-.suggest-form input:not([type="checkbox"]){display:block;width:100%;margin-top:6px;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:16px}
+.suggest-form input:not([type="checkbox"]){display:block;width:100%;margin-top:6px;padding:12px 14px;border:2px solid var(--ink);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:16px}
 .suggest-form input:not([type="checkbox"]):focus{outline:3px solid var(--red);outline-offset:2px}
 .field-note{font-size:14px;color:var(--ink);font-weight:400}
 .suggest-form fieldset{border:0;padding:0;margin:0}
@@ -270,7 +270,7 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   flex:1;
   min-width:200px;
   padding:10px 14px;
-  border:1.5px solid var(--footer-line);
+  border:2px solid var(--footer-ink);
   border-radius:8px;
   background:var(--footer-bg);
   color:var(--footer-ink);
@@ -405,9 +405,9 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 
 .projects-filters{margin-bottom:24px;padding:20px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
 .filters-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px;align-items:flex-end}
-.filter-search{flex:1;min-width:240px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px}
+.filter-search{flex:1;min-width:240px;padding:10px 14px;border:2px solid var(--ink);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px}
 .filter-search:focus{outline:3px solid var(--red);outline-offset:2px;border-color:var(--ink)}
-.filter-select{padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px;min-width:160px}
+.filter-select{padding:10px 14px;border:2px solid var(--ink);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:14px;min-width:160px}
 .filter-select:focus{outline:3px solid var(--red);outline-offset:2px;border-color:var(--ink)}
 
 .projects-grid{
@@ -473,6 +473,18 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   background:transparent;
   padding:0;
   border:none;
+}
+.project-card__forks{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  margin-top:12px;
+  font-size:12px;
+  font-weight:500;
+  color:var(--muted);
+}
+.project-card__forks svg{
+  flex-shrink:0;
 }
 .project-card__footer{
   margin-top:auto;

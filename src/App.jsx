@@ -1,7 +1,8 @@
 import { useData } from './useData'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
-import Learn from './components/Learn.jsx'
+import Welcome from './components/Welcome.jsx'
+import LearnPage from './components/LearnPage.jsx'
 import Projects from './components/Projects.jsx'
 import ProgramsPage from './components/ProgramsPage.jsx'
 import SponsorsPage from './components/SponsorsPage.jsx'
@@ -9,6 +10,18 @@ import SuggestProject from './components/SuggestProject.jsx'
 
 export default function App() {
   const { projects, programs, sponsors, status, addProject } = useData()
+
+  if (window.location.pathname === '/learn' || window.location.pathname === '/learn/') {
+    return (
+      <div className="page-wrapper">
+        <Header />
+        <main className="wrap">
+          <LearnPage />
+        </main>
+        <Footer />
+      </div>
+    )
+  }
 
   if (window.location.pathname === '/programs' || window.location.pathname === '/programs/') {
     return (
@@ -46,7 +59,7 @@ export default function App() {
           <a className="btn alt" href="/programs">See paid programs</a>
         </header>
 
-        <Learn />
+        <Welcome />
         <Projects projects={projects} status={status} />
         <SuggestProject onProjectSubmitted={addProject} />
       </main>

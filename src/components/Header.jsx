@@ -4,7 +4,7 @@ export default function Header() {
       <nav className="header-nav" aria-label="Main navigation">
         <a className="brand" href="/">Open Source Kenya</a>
         <div className="nav-links">
-          <a href="#learn">Learn</a>
+          <a href="/learn">Learn</a>
           <a href="#projects">Projects</a>
           <a href="/programs">Get paid</a>
           <a href="/sponsors">Sponsors</a>

@@ -430,9 +430,6 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
   color:var(--ink);
 }
-.project-card__region{
-  font-size:12px;font-weight:500;color:var(--ink);
-}
 .project-card__title{
   margin:0 0 10px;
   font-size:19px;
@@ -479,6 +476,8 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 }
 .project-card__forks svg{
   flex-shrink:0;
+  width:16px;
+  height:16px;
 }
 .project-card__footer{
   margin-top:auto;

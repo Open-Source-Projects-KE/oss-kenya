@@ -4,7 +4,6 @@ export default function Projects({ projects, status }) {
   const [q, setQ] = useState('')
   const [lang, setLang] = useState('')
   const [lvl, setLvl] = useState('')
-  const [reg, setReg] = useState('')
   const [cat, setCat] = useState('')
 
   const cats = useMemo(() => [...new Set(projects.map(p => p.category))].sort(), [projects])
@@ -14,7 +13,6 @@ export default function Projects({ projects, status }) {
     (!cat || p.category === cat) &&
     (!lang || p.language === lang) &&
     (!lvl || p.level === lvl) &&
-    (!reg || p.region === reg) &&
     (!q || `${p.name} ${p.description}`.toLowerCase().includes(q.toLowerCase()))
   )
 
@@ -33,10 +31,6 @@ export default function Projects({ projects, status }) {
         <select aria-label="Level" value={lvl} onChange={e => setLvl(e.target.value)}>
           <option value="">Any level</option>
           <option>Beginner</option><option>Intermediate</option><option>Advanced</option>
-        </select>
-        <select aria-label="Region" value={reg} onChange={e => setReg(e.target.value)}>
-          <option value="">Anywhere</option>
-          <option>Kenya</option><option>Africa</option><option>Global</option>
         </select>
       </div>
 
@@ -57,8 +51,6 @@ export default function Projects({ projects, status }) {
               <span className="tag category">{p.category}</span>
               <span className="tag lvl">{p.language}</span>
               <span className="tag lvl">{p.level}</span>
-              {p.region === 'Kenya' && <span className="tag ke">Kenyan roots</span>}
-              {p.region === 'Africa' && <span className="tag ke">African</span>}
             </div>
             <p>{p.description}</p>
             <div className="links">

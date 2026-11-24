@@ -26,12 +26,14 @@ export default function Welcome() {
             </li>
           </ol>
         </div>
-        <p className="welcome-note">
-          Completely new to open source? Start with <a href="https://github.com/firstcontributions/first-contributions" target="_blank" rel="noopener noreferrer">First Contributions</a> — a hands-on tutorial that walks you through Git basics and your first pull request in minutes.
-        </p>
-        <p className="welcome-note">
-          Want the full guide? Read our <a href="/learn">complete Learn page</a> with detailed walkthroughs for each step.
-        </p>
+        <div className="welcome-callout">
+          <p>
+            Completely new to open source? Start with <a href="https://github.com/firstcontributions/first-contributions" target="_blank" rel="noopener noreferrer">First Contributions</a> — a hands-on tutorial that walks you through Git basics and your first pull request in minutes.
+          </p>
+          <p>
+            Want the full guide? Read our <a href="/learn">complete Learn page</a> with detailed walkthroughs for each step.
+          </p>
+        </div>
       </div>
     </section>
   )

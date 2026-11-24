@@ -179,6 +179,27 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 .welcome-steps a{color:var(--green);font-weight:600}
 .welcome-note{font-size:16px;color:var(--ink);margin:0}
 .welcome-note a{font-weight:600;color:var(--green)}
+
+/* Welcome callout */
+.welcome-callout{
+  background:var(--green-soft);
+  border:2px solid var(--green);
+  border-radius:12px;
+  padding:20px 24px;
+  margin-top:24px;
+}
+.welcome-callout p{margin:0 0 12px;font-size:16px;line-height:1.6;color:var(--ink)}
+.welcome-callout p:last-child{margin:0}
+.welcome-callout a{font-weight:600;color:var(--green);text-decoration:underline;text-underline-offset:2px}
+.welcome-callout a:hover{color:var(--green-hover)}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .welcome-callout{
+    background:var(--green-soft);
+    border-color:var(--green);
+  }
+}
+
 .steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
 .steps li::before{content:counter(s);font:800 26px "Bricolage Grotesque",sans-serif;color:var(--red);display:block}
 .steps b{display:block;margin-bottom:2px}
@@ -471,7 +492,7 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 
 /* Learn Page - Soft Brutalism */
 .learn-page{max-width:1040px;margin:0 auto;padding:0 20px}
-.learn-header{text-align:left;padding:64px 0 40px;border-bottom:3px solid var(--ink);margin-bottom:48px}
+.learn-header{text-align:left;padding:64px 0 40px;margin-bottom:48px;border-bottom:3px solid var(--ink)}
 .learn-header h1{
   font-size:clamp(40px,8vw,72px);
   margin-bottom:16px;
@@ -489,8 +510,42 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   line-height:1.5;
   font-weight:400;
   font-family:ui-monospace,monospace;
-  border-left:3px solid var(--green);
-  padding-left:16px;
+  position:relative;
+  padding:0;
+  display:inline-block;
+  width:auto;
+}
+/* Spray paint effect - covers ~2/3 of card */
+.learn-subtitle::before{
+  content:"";
+  position:absolute;
+  top:4px;
+  left:4px;
+  right:4px;
+  bottom:35%;
+  background:var(--gold-soft);
+  opacity:0.9;
+  pointer-events:none;
+  z-index:-1;
+  /* Rough spray edges using clip-path */
+  clip-path:polygon(
+    0% 15%,
+    5% 0%,
+    95% 0%,
+    100% 10%,
+    100% 85%,
+    90% 100%,
+    10% 100%,
+    0% 90%
+  );
+  /* Subtle noise texture via gradient */
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--gold) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, var(--gold) 1px, transparent 1px),
+    radial-gradient(circle at 40% 60%, var(--gold) 0.5px, transparent 0.5px),
+    var(--gold-soft);
+  background-size:50px 50px, 70px 70px, 30px 30px, auto;
+  background-position:0 0, 25px 25px, 10px 10px, 0 0;
 }
 
 .learn-steps{display:grid;gap:24px}
@@ -701,14 +756,6 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   display:block;
 }
 .resources-list a:hover{color:var(--green)}
-.resources-list a::after{
-  content:" →";
-  margin-left:8px;
-  color:var(--ink);
-  font-weight:400;
-  transition:margin-left .15s;
-}
-.resources-list li:hover a::after{margin-left:16px}
 .next-step-card:hover{border-color:var(--green)}
 .next-step-card h3{font-size:19px;margin:0 0 10px;color:var(--ink)}
 .next-step-card p{margin:0;color:var(--ink);line-height:1.7;font-size:16px}

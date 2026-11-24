@@ -125,11 +125,11 @@ export default function LearnPage() {
       <section className="learn-resources">
         <h2>Helpful resources</h2>
         <ul className="resources-list">
-          <li><a href="https://github.com/firstcontributions/first-contributions" target="_blank" rel="noopener noreferrer">First Contributions</a> — Hands-on tutorial that walks you through a real PR in 10 minutes</li>
-          <li><a href="https://opensource.guide/" target="_blank" rel="noopener noreferrer">Open Source Guides</a> — GitHub's official guides on starting, contributing, and leading</li>
-          <li><a href="https://github.com/freeCodeCamp/freeCodeCamp/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">freeCodeCamp CONTRIBUTING.md</a> — Gold-standard example of a contributor guide</li>
-          <li><a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener noreferrer">Pro Git Book</a> — Free, comprehensive Git reference (Chapters 1–3 cover 90% of daily use)</li>
-          <li><a href="https://choosealicense.com/" target="_blank" rel="noopener noreferrer">Choose a License</a> — Understand what MIT, Apache-2.0, GPL mean for your contributions</li>
+          <li><a href="https://github.com/firstcontributions/first-contributions" target="_blank" rel="noopener noreferrer">First Contributions</a> Hands-on tutorial that walks you through a real PR in 10 minutes</li>
+          <li><a href="https://opensource.guide/" target="_blank" rel="noopener noreferrer">Open Source Guides</a> GitHub's official guides on starting, contributing, and leading</li>
+          <li><a href="https://github.com/freeCodeCamp/freeCodeCamp/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">freeCodeCamp CONTRIBUTING.md</a> Gold-standard example of a contributor guide</li>
+          <li><a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener noreferrer">Pro Git Book</a> Free, comprehensive Git reference (Chapters 1–3 cover 90% of daily use)</li>
+          <li><a href="https://choosealicense.com/" target="_blank" rel="noopener noreferrer">Choose a License</a> Understand what MIT, Apache-2.0, GPL mean for your contributions</li>
         </ul>
       </section>
     </div>

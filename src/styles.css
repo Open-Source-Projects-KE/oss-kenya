@@ -168,27 +168,38 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 
 /* Welcome section */
 #welcome{padding-top:24px;border-top:none}
-.welcome-content{max-width:720px}
+.welcome-content{max-width:960px}
 .welcome-lead{font-size:20px;line-height:1.7;color:var(--ink);margin:0 0 28px}
-.welcome-steps{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;margin:0 0 20px}
+
+/* Welcome main layout - side by side on larger screens */
+.welcome-main{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:24px;
+}
+@media (min-width:800px){
+  .welcome-main{grid-template-columns:1fr 340px}
+}
+
+.welcome-steps{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px}
 .welcome-steps h3{font-size:19px;margin:0 0 16px;color:var(--ink)}
 .welcome-steps ol{margin:0;padding-left:20px;display:grid;gap:2px}
 .welcome-steps li{line-height:1.4;padding:0}
 .welcome-steps strong{color:var(--ink)}
 .welcome-steps code{background:var(--bg);padding:2px 6px;border-radius:4px;font-size:.9em;font-family:ui-monospace,monospace}
 .welcome-steps a{color:var(--green);font-weight:600}
-.welcome-note{font-size:16px;color:var(--ink);margin:0}
-.welcome-note a{font-weight:600;color:var(--green)}
 
-/* Welcome callout */
+/* Welcome callout - floats beside steps on desktop */
 .welcome-callout{
   background:var(--green-soft);
   border:2px solid var(--green);
   border-radius:12px;
   padding:20px 24px;
-  margin-top:24px;
+  height:fit-content;
+  position:sticky;
+  top:100px;
 }
-.welcome-callout p{margin:0 0 12px;font-size:16px;line-height:1.6;color:var(--ink)}
+.welcome-callout p{margin:0 0 12px;font-size:15px;line-height:1.6;color:var(--ink)}
 .welcome-callout p:last-child{margin:0}
 .welcome-callout a{font-weight:600;color:var(--green);text-decoration:underline;text-underline-offset:2px}
 .welcome-callout a:hover{color:var(--green-hover)}
@@ -538,14 +549,14 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
     10% 100%,
     0% 90%
   );
-  /* Subtle noise texture via gradient */
+  /* Subtle noise texture via gradient - smaller dots */
   background-image:
-    radial-gradient(circle at 20% 30%, var(--gold) 1px, transparent 1px),
-    radial-gradient(circle at 80% 70%, var(--gold) 1px, transparent 1px),
-    radial-gradient(circle at 40% 60%, var(--gold) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 20% 30%, var(--gold) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 80% 70%, var(--gold) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 40% 60%, var(--gold) 0.3px, transparent 0.3px),
     var(--gold-soft);
-  background-size:50px 50px, 70px 70px, 30px 30px, auto;
-  background-position:0 0, 25px 25px, 10px 10px, 0 0;
+  background-size:80px 80px, 120px 120px, 50px 50px, auto;
+  background-position:0 0, 30px 30px, 15px 15px, 0 0;
 }
 
 .learn-steps{display:grid;gap:24px}

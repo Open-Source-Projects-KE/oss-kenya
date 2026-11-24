@@ -340,6 +340,94 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   .community-note{width:auto;text-align:left}
 }
 
+/* Mobile Navigation Toggle */
+.nav-toggle{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border:none;
+  background:transparent;
+  color:var(--header-ink);
+  cursor:pointer;
+  padding:0;
+  border-radius:8px;
+  transition:background .2s;
+}
+.nav-toggle:hover{
+  background:rgba(255,255,255,0.1);
+}
+.nav-toggle:focus-visible{
+  outline:3px solid var(--red);
+  outline-offset:2px;
+}
+.nav-toggle__icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+  .header-nav{
+    justify-content:space-between;
+    gap:12px;
+  }
+  .header-nav .brand{
+    margin-right:0;
+    flex-shrink:0;
+  }
+  .nav-toggle{
+    display:flex;
+    flex-shrink:0;
+  }
+  .nav-links{
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:var(--header-bg);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 8px 24px rgba(0,0,0,0.15);
+    flex-direction:column;
+    gap:0;
+    padding:8px 0;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-8px);
+    transition:opacity .2s ease, visibility .2s ease, transform .2s ease;
+    z-index:99;
+  }
+  .nav-links.is-open{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+  .nav-links a{
+    display:block;
+    width:100%;
+    padding:14px 20px;
+    border-bottom:none;
+    border-left:3px solid transparent;
+    font-size:16px;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus{
+    background:rgba(255,255,255,0.05);
+    border-left-color:var(--green);
+    color:var(--green);
+  }
+  .nav-links a:last-child{
+    border-bottom:none;
+  }
+}
+
+/* Ensure header stays on top of mobile menu */
+.site-header{
+  z-index:200;
+}
+
 /* Learn Page */
 .learn-page{max-width:1040px;margin:0 auto;padding:0 20px}
 .learn-header{text-align:center;padding:48px 0 32px}
@@ -614,4 +702,92 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 .community-note{margin:0;font-size:14px;opacity:.8;width:100%;text-align:center}
 @media (min-width:640px){
   .community-note{width:auto;text-align:left}
+}
+
+/* Mobile Navigation Toggle */
+.nav-toggle{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border:none;
+  background:transparent;
+  color:var(--header-ink);
+  cursor:pointer;
+  padding:0;
+  border-radius:8px;
+  transition:background .2s;
+}
+.nav-toggle:hover{
+  background:rgba(255,255,255,0.1);
+}
+.nav-toggle:focus-visible{
+  outline:3px solid var(--red);
+  outline-offset:2px;
+}
+.nav-toggle__icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 768px) {
+  .header-nav{
+    justify-content:space-between;
+    gap:12px;
+  }
+  .header-nav .brand{
+    margin-right:0;
+    flex-shrink:0;
+  }
+  .nav-toggle{
+    display:flex;
+    flex-shrink:0;
+  }
+  .nav-links{
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:var(--header-bg);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 8px 24px rgba(0,0,0,0.15);
+    flex-direction:column;
+    gap:0;
+    padding:8px 0;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-8px);
+    transition:opacity .2s ease, visibility .2s ease, transform .2s ease;
+    z-index:99;
+  }
+  .nav-links.is-open{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+  .nav-links a{
+    display:block;
+    width:100%;
+    padding:14px 20px;
+    border-bottom:none;
+    border-left:3px solid transparent;
+    font-size:16px;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus{
+    background:rgba(255,255,255,0.05);
+    border-left-color:var(--green);
+    color:var(--green);
+  }
+  .nav-links a:last-child{
+    border-bottom:none;
+  }
+}
+
+/* Ensure header stays on top of mobile menu */
+.site-header{
+  z-index:200;
 }

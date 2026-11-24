@@ -94,7 +94,7 @@ export default function LearnPage() {
         <h1>Your First Open Source Contribution</h1>
         <p className="learn-subtitle">
           A practical, step-by-step guide to going from zero to merged pull request.
-          No prior experience required — just curiosity and a willingness to learn.
+          No prior experience required.
         </p>
       </header>
 

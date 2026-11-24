@@ -1,4 +1,32 @@
 import { useMemo, useState } from 'react'
+import { useGitHubRepoDescription } from '../hooks/useGitHubRepo'
+
+function ProjectCardInline({ project }) {
+  const { description: githubDescription, loading } = useGitHubRepoDescription(
+    project.url,
+    project.description
+  )
+  const displayDescription = githubDescription || project.description
+
+  return (
+    <article className="card">
+      <h3>{project.name}</h3>
+      <div className="tags">
+        <span className="tag category">{project.category}</span>
+        <span className="tag lvl">{project.language}</span>
+        <span className="tag lvl">{project.level}</span>
+        {project.region === 'Kenya' && <span className="tag ke">Kenyan roots</span>}
+        {project.region === 'Africa' && <span className="tag ke">African</span>}
+      </div>
+      <p>{displayDescription}</p>
+      <div className="links">
+        <a href={project.url} target="_blank" rel="noopener noreferrer">Project</a>
+        {project.live_url && <a href={project.live_url} target="_blank" rel="noopener noreferrer">Live site</a>}
+        <a href={project.issues_url || project.url} target="_blank" rel="noopener noreferrer">Good first issues</a>
+      </div>
+    </article>
+  )
+}
 
 export default function Projects({ projects, status }) {
   const [q, setQ] = useState('')
@@ -21,7 +49,7 @@ export default function Projects({ projects, status }) {
   return (
     <section id="projects">
       <h2>Projects</h2>
-      <p className="lede">Filter by what you’re interested in, the language you know, and how experienced you are.</p>
+      <p className="lede">Filter by what you're interested in, the language you know, and how experienced you are.</p>
       {status && <div id="status">{status}</div>}
 
       <div className="filters">
@@ -51,22 +79,7 @@ export default function Projects({ projects, status }) {
 
       <div className="grid">
         {list.length ? list.map(p => (
-          <article className="card" key={p.id ?? p.name}>
-            <h3>{p.name}</h3>
-            <div className="tags">
-              <span className="tag category">{p.category}</span>
-              <span className="tag lvl">{p.language}</span>
-              <span className="tag lvl">{p.level}</span>
-              {p.region === 'Kenya' && <span className="tag ke">Kenyan roots</span>}
-              {p.region === 'Africa' && <span className="tag ke">African</span>}
-            </div>
-            <p>{p.description}</p>
-            <div className="links">
-              <a href={p.url} target="_blank" rel="noopener noreferrer">Project</a>
-              {p.live_url && <a href={p.live_url} target="_blank" rel="noopener noreferrer">Live site</a>}
-              <a href={p.issues_url || p.url} target="_blank" rel="noopener noreferrer">Good first issues</a>
-            </div>
-          </article>
+          <ProjectCardInline key={p.id ?? p.name} project={p} />
         )) : (
           <div className="empty">No projects match these filters. Clear a filter or suggest a project below.</div>
         )}

@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react'
 import ForkIcon from './icons/ForkIcon'
+import { useGitHubRepoDescription } from '../hooks/useGitHubRepo'
 
 // Fallback fork icon (used if import fails)
 function FallbackForkIcon({ className, ...props }) {
@@ -18,12 +20,21 @@ function ForkIconWrapper({ className, ...props }) {
   }
 }
 
+function formatForks(count) {
+  if (!count) return '—'
+  if (count >= 1000) return (count / 1000).toFixed(1).replace('.0', '') + 'k'
+  return count.toString()
+}
+
 export default function ProjectCard({ project }) {
-  const formatForks = (count) => {
-    if (!count) return '—'
-    if (count >= 1000) return (count / 1000).toFixed(1).replace('.0', '') + 'k'
-    return count.toString()
-  }
+  // Fetch GitHub repo description, fall back to stored description
+  const { description: githubDescription, loading } = useGitHubRepoDescription(
+    project.url,
+    project.description
+  )
+
+  // Use GitHub description if loaded, otherwise use stored description during loading
+  const displayDescription = githubDescription || (loading ? project.description : project.description)
 
   return (
     <article className="project-card">
@@ -43,7 +54,7 @@ export default function ProjectCard({ project }) {
           )}
         </div>
         <h3 className="project-card__title">{project.name}</h3>
-        <p className="project-card__excerpt">{project.description}</p>
+        <p className="project-card__excerpt">{displayDescription}</p>
         <div className="project-card__tags">
           <span className="project-card__tag">{project.language}</span>
           <span className="project-card__tag">{project.level}</span>

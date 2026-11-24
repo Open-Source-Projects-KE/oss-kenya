@@ -259,16 +259,24 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 .welcome-callout p{margin:0 0 14px;font-size:15px;line-height:1.5;color:var(--ink);font-weight:400}
 .welcome-callout p:last-child{margin:0}
 .welcome-callout a{
-  font-weight:700;
+  font-family:"Bricolage Grotesque",ui-monospace,monospace;
+  font-weight:800;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
   color:var(--ink);
   text-decoration:none;
-  border-bottom:2px solid var(--green);
-  text-underline-offset:3px;
-  transition:border-color .15s,color .15s;
+  background:var(--gold);
+  padding:2px 6px;
+  border-radius:0;
+  transition:background .15s,color .15s,transform .15s;
+  box-shadow:2px 2px 0 0 var(--ink);
 }
 .welcome-callout a:hover{
-  color:var(--green);
-  border-bottom-color:var(--green);
+  background:var(--ink);
+  color:var(--bg);
+  transform:translate(-2px,-2px);
+  box-shadow:4px 4px 0 0 var(--ink);
 }
 
 /* Dark mode */
@@ -351,7 +359,7 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   content:"";
   position:absolute;
   inset:0;
-  background-image:radial-gradient(var(--footer-line) 2.5px, transparent 2.5px);
+  background-image:radial-gradient(var(--footer-line) 1.5px, transparent 1.5px);
   background-size:24px 24px;
   background-position:0 0;
   opacity:0.7;
@@ -362,7 +370,7 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 }
 @media (prefers-color-scheme:light){
   :root[data-theme="light"] .site-footer::before{
-    background-image:radial-gradient(var(--footer-line) 2.5px, transparent 2.5px);
+    background-image:radial-gradient(var(--footer-line) 1.5px, transparent 1.5px);
     opacity:0.3;
   }
 }

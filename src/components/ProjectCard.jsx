@@ -32,6 +32,12 @@ export default function ProjectCard({ project }) {
     storedForkCount == null ? null : Number(storedForkCount)
   )
 
+  const { description: githubDescription, loading } = useGitHubRepoDescription(
+    project.url,
+    project.description
+  )
+  const displayDescription = githubDescription || project.description
+
   useEffect(() => {
     if (storedForkCount != null) return
     if (!project.url) return

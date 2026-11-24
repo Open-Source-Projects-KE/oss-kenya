@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from './supabase'
-import { SEED_PROJECTS, SEED_PROGRAMS } from './seed'
+import { SEED_PROGRAMS } from './seed'
 
 const TIER_ORDER = { gold: 0, silver: 1, community: 2 }
 
@@ -12,12 +12,19 @@ function sortSponsors(sponsors) {
   )
 }
 
+function normalizeProject(project) {
+  return {
+    ...project,
+    fork_count: project.fork_count ?? project.forks_count ?? project.forks ?? null,
+  }
+}
+
 export function useData() {
   const [data, setData] = useState({
-    projects: SEED_PROJECTS,
+    projects: [],
     programs: SEED_PROGRAMS,
     sponsors: [],
-    status: supabase ? '' : 'Showing sample data. Add your Supabase keys to go live.',
+    status: supabase ? '' : 'Projects are unavailable until Supabase is configured.',
   })
 
   useEffect(() => {
@@ -33,10 +40,17 @@ export function useData() {
         if (p.error) throw p.error
         if (g.error) throw g.error
         if (sponsors.error) throw sponsors.error
-        if (!cancelled) setData({ projects: p.data, programs: g.data, sponsors: sortSponsors(sponsors.data), status: '' })
+        if (!cancelled) {
+          setData({
+            projects: (p.data ?? []).map(normalizeProject),
+            programs: g.data,
+            sponsors: sortSponsors(sponsors.data),
+            status: '',
+          })
+        }
       } catch (e) {
         console.error(e)
-        if (!cancelled) setData(d => ({ ...d, status: "Couldn't reach the database, showing sample data." }))
+        if (!cancelled) setData(d => ({ ...d, projects: [], status: "Couldn't reach the database." }))
       }
     })()
     return () => { cancelled = true }
@@ -51,7 +65,6 @@ export function useData() {
       category: categories.join(', '),
       language: languages.join(', '),
       level: 'Beginner',
-      region: 'Global',
       url: github,
       live_url: liveLink || null,
       issues_url: `${github.replace(/\/$/, '')}/issues`,
@@ -62,7 +75,9 @@ export function useData() {
 
     setData(current => ({
       ...current,
-      projects: [...current.projects, inserted].sort((a, b) => a.name.localeCompare(b.name)),
+      projects: [...current.projects, normalizeProject(inserted)].sort((a, b) =>
+        a.name.localeCompare(b.name)
+      ),
     }))
   }
 

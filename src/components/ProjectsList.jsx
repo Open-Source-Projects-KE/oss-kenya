@@ -5,7 +5,6 @@ export default function ProjectsList({ projects, status, showFilters = true, pag
   const [q, setQ] = useState('')
   const [lang, setLang] = useState('')
   const [lvl, setLvl] = useState('')
-  const [reg, setReg] = useState('')
   const [cat, setCat] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -16,7 +15,6 @@ export default function ProjectsList({ projects, status, showFilters = true, pag
     (!cat || p.category === cat) &&
     (!lang || p.language === lang) &&
     (!lvl || p.level === lvl) &&
-    (!reg || p.region === reg) &&
     (!q || `${p.name} ${p.description}`.toLowerCase().includes(q.toLowerCase()))
   )
 
@@ -70,17 +68,6 @@ export default function ProjectsList({ projects, status, showFilters = true, pag
               <option>Beginner</option>
               <option>Intermediate</option>
               <option>Advanced</option>
-            </select>
-            <select
-              aria-label="Region"
-              value={reg}
-              onChange={e => { setReg(e.target.value); setCurrentPage(1) }}
-              className="filter-select"
-            >
-              <option value="">All regions</option>
-              <option>Kenya</option>
-              <option>Africa</option>
-              <option>Global</option>
             </select>
           </div>
           <div className="chips" role="group" aria-label="Categories">

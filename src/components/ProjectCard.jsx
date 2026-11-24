@@ -32,6 +32,8 @@ export default function ProjectCard({ project }) {
     storedForkCount == null ? null : Number(storedForkCount)
   )
 
+  const displayDescription = project.description
+
   useEffect(() => {
     if (storedForkCount != null) return
     if (!project.url) return

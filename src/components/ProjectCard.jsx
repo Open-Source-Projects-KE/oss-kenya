@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import ForkIcon from './icons/ForkIcon'
 import { useGitHubRepoDescription } from '../hooks/useGitHubRepo'
 
@@ -27,14 +27,44 @@ function formatForks(count) {
 }
 
 export default function ProjectCard({ project }) {
-  // Fetch GitHub repo description, fall back to stored description
-  const { description: githubDescription, loading } = useGitHubRepoDescription(
-    project.url,
-    project.description
+  const storedForkCount = project.fork_count ?? project.forks_count ?? project.forks ?? null
+  const [forkCount, setForkCount] = useState(
+    storedForkCount == null ? null : Number(storedForkCount)
   )
 
-  // Use GitHub description if loaded, otherwise use stored description during loading
-  const displayDescription = githubDescription || (loading ? project.description : project.description)
+  useEffect(() => {
+    if (storedForkCount != null) return
+    if (!project.url) return
+
+    let cancelled = false
+    const match = project.url.match(/^https?:\/\/github\.com\/([^/]+\/[^/#?]+)/i)
+    if (!match) return
+
+    fetch(`https://api.github.com/repos/${match[1].replace(/\/$/, '')}`)
+      .then(response => {
+        if (!response.ok) throw new Error('GitHub repository data unavailable')
+        return response.json()
+      })
+      .then(repo => {
+        if (!cancelled && Number.isFinite(repo.forks_count)) {
+          setForkCount(repo.forks_count)
+        }
+      })
+      .catch(() => {})
+
+    return () => { cancelled = true }
+  }, [project.url, storedForkCount])
+
+  const formatForks = (count) => {
+    if (count == null || count === '') return null
+    const numericCount = Number(count)
+    if (!Number.isFinite(numericCount) || numericCount < 0) return null
+    if (numericCount === 0) return '0'
+    if (numericCount >= 1000) return (numericCount / 1000).toFixed(1).replace('.0', '') + 'k'
+    return numericCount.toString()
+  }
+
+  const formattedForkCount = formatForks(forkCount)
 
   return (
     <article className="project-card">
@@ -42,14 +72,11 @@ export default function ProjectCard({ project }) {
         <div className="project-card__header">
           <div className="project-card__meta">
             <span className="project-card__category">{project.category}</span>
-            {project.region === 'Kenya' && <span className="project-card__region">Kenya</span>}
-            {project.region === 'Africa' && <span className="project-card__region">Africa</span>}
-            {project.region === 'Global' && <span className="project-card__region">Global</span>}
           </div>
-          {project.fork_count && (
+          {formattedForkCount !== null && (
             <div className="project-card__forks">
-              <ForkIconWrapper />
-              <span>{formatForks(project.fork_count)}</span>
+              <ForkIconWrapper className="project-card__fork-icon" />
+              <span>{formattedForkCount}</span>
             </div>
           )}
         </div>

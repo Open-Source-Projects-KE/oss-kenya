@@ -32,7 +32,6 @@ export default function Projects({ projects, status }) {
   const [q, setQ] = useState('')
   const [lang, setLang] = useState('')
   const [lvl, setLvl] = useState('')
-  const [reg, setReg] = useState('')
   const [cat, setCat] = useState('')
 
   const cats = useMemo(() => [...new Set(projects.map(p => p.category))].sort(), [projects])
@@ -42,7 +41,6 @@ export default function Projects({ projects, status }) {
     (!cat || p.category === cat) &&
     (!lang || p.language === lang) &&
     (!lvl || p.level === lvl) &&
-    (!reg || p.region === reg) &&
     (!q || `${p.name} ${p.description}`.toLowerCase().includes(q.toLowerCase()))
   )
 
@@ -62,10 +60,6 @@ export default function Projects({ projects, status }) {
           <option value="">Any level</option>
           <option>Beginner</option><option>Intermediate</option><option>Advanced</option>
         </select>
-        <select aria-label="Region" value={reg} onChange={e => setReg(e.target.value)}>
-          <option value="">Anywhere</option>
-          <option>Kenya</option><option>Africa</option><option>Global</option>
-        </select>
       </div>
 
       <div className="chips" role="group" aria-label="Categories">
@@ -79,7 +73,20 @@ export default function Projects({ projects, status }) {
 
       <div className="grid">
         {list.length ? list.map(p => (
-          <ProjectCardInline key={p.id ?? p.name} project={p} />
+          <article className="card" key={p.id ?? p.name}>
+            <h3>{p.name}</h3>
+            <div className="tags">
+              <span className="tag category">{p.category}</span>
+              <span className="tag lvl">{p.language}</span>
+              <span className="tag lvl">{p.level}</span>
+            </div>
+            <p>{p.description}</p>
+            <div className="links">
+              <a href={p.url} target="_blank" rel="noopener noreferrer">Project</a>
+              {p.live_url && <a href={p.live_url} target="_blank" rel="noopener noreferrer">Live site</a>}
+              <a href={p.issues_url || p.url} target="_blank" rel="noopener noreferrer">Good first issues</a>
+            </div>
+          </article>
         )) : (
           <div className="empty">No projects match these filters. Clear a filter or suggest a project below.</div>
         )}

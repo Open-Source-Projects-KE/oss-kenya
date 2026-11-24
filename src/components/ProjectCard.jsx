@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import ForkIcon from './icons/ForkIcon'
+import { useGitHubRepoDescription } from '../hooks/useGitHubRepo'
 
 // Fallback fork icon (used if import fails)
 function FallbackForkIcon({ className, ...props }) {
@@ -17,6 +18,12 @@ function ForkIconWrapper({ className, ...props }) {
   } catch {
     return <FallbackForkIcon className={className} {...props} />
   }
+}
+
+function formatForks(count) {
+  if (!count) return '—'
+  if (count >= 1000) return (count / 1000).toFixed(1).replace('.0', '') + 'k'
+  return count.toString()
 }
 
 export default function ProjectCard({ project }) {
@@ -74,7 +81,7 @@ export default function ProjectCard({ project }) {
           )}
         </div>
         <h3 className="project-card__title">{project.name}</h3>
-        <p className="project-card__excerpt">{project.description}</p>
+        <p className="project-card__excerpt">{displayDescription}</p>
         <div className="project-card__tags">
           <span className="project-card__tag">{project.language}</span>
           <span className="project-card__tag">{project.level}</span>

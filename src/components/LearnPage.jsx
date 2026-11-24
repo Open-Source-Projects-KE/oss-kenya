@@ -1,3 +1,5 @@
+import prImage from '../assets/images/image.png'
+
 const STEPS = [
   {
     number: 1,
@@ -46,6 +48,7 @@ const STEPS = [
     imageAlt: 'GitHub Pull Request page showing file changes, description, and review conversation',
     placeholder: 'Pull Request',
     side: 'right',
+    image: prImage,
   },
 ]
 
@@ -63,18 +66,22 @@ function StepCard({ step }) {
         </a>
       </div>
       <div className="step-card__image" aria-hidden="true">
-        <div className="image-placeholder">
-          <svg viewBox="0 0 400 300" width="100%" height="100%" fill="none" aria-hidden="true">
-            <rect width="400" height="300" fill="var(--line)"/>
-            <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="var(--muted)">{step.placeholder}</text>
-            <rect x="20" y="20" width="60" height="40" rx="4" fill="var(--muted)" opacity="0.3"/>
-            <rect x="100" y="20" width="80" height="40" rx="4" fill="var(--muted)" opacity="0.3"/>
-            <rect x="20" y="80" width="360" height="12" rx="2" fill="var(--muted)" opacity="0.2"/>
-            <rect x="20" y="110" width="360" height="12" rx="2" fill="var(--muted)" opacity="0.15"/>
-            <rect x="20" y="140" width="280" height="12" rx="2" fill="var(--muted)" opacity="0.15"/>
-            <rect x="20" y="180" width="120" height="40" rx="4" fill="var(--green)" opacity="0.3"/>
-          </svg>
-        </div>
+        {step.image ? (
+          <img src={step.image} alt={step.imageAlt} className="step-card__image-img" />
+        ) : (
+          <div className="image-placeholder">
+            <svg viewBox="0 0 400 300" width="100%" height="100%" fill="none" aria-hidden="true">
+              <rect width="400" height="300" fill="var(--line)"/>
+              <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="var(--muted)">{step.placeholder}</text>
+              <rect x="20" y="20" width="60" height="40" rx="4" fill="var(--muted)" opacity="0.3"/>
+              <rect x="100" y="20" width="80" height="40" rx="4" fill="var(--muted)" opacity="0.3"/>
+              <rect x="20" y="80" width="360" height="12" rx="2" fill="var(--muted)" opacity="0.2"/>
+              <rect x="20" y="110" width="360" height="12" rx="2" fill="var(--muted)" opacity="0.15"/>
+              <rect x="20" y="140" width="280" height="12" rx="2" fill="var(--muted)" opacity="0.15"/>
+              <rect x="20" y="180" width="120" height="40" rx="4" fill="var(--green)" opacity="0.3"/>
+            </svg>
+          </div>
+        )}
       </div>
     </article>
   )

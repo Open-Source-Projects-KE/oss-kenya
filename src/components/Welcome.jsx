@@ -29,10 +29,10 @@ export default function Welcome() {
           </div>
           <div className="welcome-callout">
             <p>
-              Completely new to open source? Start with <a href="https://github.com/firstcontributions/first-contributions" target="_blank" rel="noopener noreferrer">First Contributions</a> — a hands-on tutorial that walks you through Git basics and your first pull request in minutes.
+              New to open source? <a href="https://github.com/firstcontributions/first-contributions" target="_blank" rel="noopener noreferrer">First Contributions</a> walks you through your first PR in minutes.
             </p>
             <p>
-              Want the full guide? Read our <a href="/learn">complete Learn page</a> with detailed walkthroughs for each step.
+              Want the full guide? <a href="/learn">Read the Learn page →</a>
             </p>
           </div>
         </div>

@@ -189,26 +189,100 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
 .welcome-steps code{background:var(--bg);padding:2px 6px;border-radius:4px;font-size:.9em;font-family:ui-monospace,monospace}
 .welcome-steps a{color:var(--green);font-weight:600}
 
-/* Welcome callout - floats beside steps on desktop */
+/* Welcome callout - speech bubble popover with soft brutalism */
 .welcome-callout{
-  background:var(--green-soft);
-  border:2px solid var(--green);
-  border-radius:12px;
-  padding:20px 24px;
-  height:fit-content;
-  position:sticky;
-  top:100px;
-}
-.welcome-callout p{margin:0 0 12px;font-size:15px;line-height:1.6;color:var(--ink)}
-.welcome-callout p:last-child{margin:0}
-.welcome-callout a{font-weight:600;color:var(--green);text-decoration:underline;text-underline-offset:2px}
-.welcome-callout a:hover{color:var(--green-hover)}
+  --bubble-bg: var(--bg);
+  --bubble-border: var(--ink);
+  --bubble-shadow: 8px 8px 0 0 var(--ink);
+  --tail-size: 28px;
 
+  position:relative;
+  background:var(--bubble-bg);
+  border:3px solid var(--bubble-border);
+  border-radius:0;
+  padding:24px 28px;
+  height:fit-content;
+  width:100%;
+  max-width:360px;
+  box-shadow:var(--bubble-shadow);
+  z-index:10;
+  /* Float animation */
+  animation:bubbleFloat 4s ease-in-out infinite;
+}
+@media (min-width:800px){
+  .welcome-callout{
+    position:sticky;
+    top:120px;
+    margin-left:auto;
+    transform:rotate(-2deg);
+  }
+}
+
+/* Speech bubble tail - points to future fork mascot location */
+.welcome-callout::after{
+  content:"";
+  position:absolute;
+  bottom:calc(var(--tail-size) * -1);
+  right:40px;
+  width:0;
+  height:0;
+  border:var(--tail-size) solid transparent;
+  border-top-color:var(--bubble-border);
+  filter:drop-shadow(4px 4px 0 var(--ink));
+}
+.welcome-callout::before{
+  content:"";
+  position:absolute;
+  bottom:calc(var(--tail-size) * -1 + 3px);
+  right:40px;
+  width:0;
+  height:0;
+  border:calc(var(--tail-size) - 3px) solid transparent;
+  border-top-color:var(--bubble-bg);
+  z-index:1;
+}
+
+/* Float animation */
+@keyframes bubbleFloat{
+  0%, 100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-8px) rotate(-2deg)}
+}
+@media (max-width:799px){
+  @keyframes bubbleFloat{
+    0%, 100%{transform:translateY(0)}
+    50%{transform:translateY(-6px)}
+  }
+  .welcome-callout{transform:none}
+}
+
+/* Content styling */
+.welcome-callout p{margin:0 0 14px;font-size:15px;line-height:1.5;color:var(--ink);font-weight:400}
+.welcome-callout p:last-child{margin:0}
+.welcome-callout a{
+  font-weight:700;
+  color:var(--ink);
+  text-decoration:none;
+  border-bottom:2px solid var(--green);
+  text-underline-offset:3px;
+  transition:border-color .15s,color .15s;
+}
+.welcome-callout a:hover{
+  color:var(--green);
+  border-bottom-color:var(--green);
+}
+
+/* Dark mode */
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]) .welcome-callout{
-    background:var(--green-soft);
-    border-color:var(--green);
+    --bubble-bg: var(--surface);
+    --bubble-border: var(--footer-ink);
+    --bubble-shadow: 8px 8px 0 0 var(--footer-ink);
   }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .welcome-callout{animation:none}
 }
 
 .steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
@@ -575,10 +649,6 @@ section h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
   border-color:var(--green);
   transform:translate(-4px,-4px);
   box-shadow:12px 12px 0 0 var(--green);
-}
-.step-card:focus-within{
-  outline:3px solid var(--red);
-  outline-offset:4px;
 }
 .step-card--left .step-card__content{order:1}
 .step-card--left .step-card__image{order:2}
